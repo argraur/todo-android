@@ -1,4 +1,4 @@
-package me.reflect.todo.ui.theme
+package me.reflect.todo.common.theme
 
 import android.app.Activity
 import android.os.Build
