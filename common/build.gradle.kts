@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -37,6 +38,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    libraryVariants.configureEach {
+        sourceSets {
+            named((this@configureEach).name) {
+                kotlin.srcDir("build/generated/ksp/${(this@configureEach).name}/kotlin")
+            }
+        }
+    }
 }
 
 dependencies {
@@ -48,4 +56,8 @@ dependencies {
     implementation(libs.activity.compose)
     implementation(libs.material3)
     implementation(platform(libs.compose.bom))
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+    implementation(libs.koin.annotations)
+    ksp(libs.koin.ksp.compiler)
 }
