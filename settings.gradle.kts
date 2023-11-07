@@ -15,4 +15,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "ReDo"
 include(":app")
- 
+include(":ui")
+include(":data")
+include(":domain")
+include(":common")

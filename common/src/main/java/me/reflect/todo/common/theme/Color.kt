@@ -1,4 +1,4 @@
-package me.reflect.todo.ui.theme
+package me.reflect.todo.common.theme
 
 import androidx.compose.ui.graphics.Color
 
