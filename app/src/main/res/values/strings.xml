@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ReDo</string>
+    <string name="main">Main</string>
+    <string name="settings">Settings</string>
 </resources>

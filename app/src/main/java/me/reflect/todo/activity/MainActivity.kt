@@ -1,4 +1,4 @@
-package me.reflect.todo
+package me.reflect.todo.activity
 
 import android.graphics.Color
 import android.os.Bundle
@@ -10,8 +10,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
 import me.reflect.todo.common.theme.ReDoTheme
-import me.reflect.todo.ui.MainScreen
+import me.reflect.todo.navigation.InitialNavHost
+import org.koin.compose.KoinContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,13 +23,16 @@ class MainActivity : ComponentActivity() {
         )
         super.onCreate(savedInstanceState)
         setContent {
-            ReDoTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    MainScreen("Android")
+            KoinContext {
+                ReDoTheme {
+                    // A surface container using the 'background' color from the theme
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = MaterialTheme.colorScheme.background
+                    ) {
+                        val navController = rememberNavController()
+                        InitialNavHost(navController = navController)
+                    }
                 }
             }
         }

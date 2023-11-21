@@ -59,7 +59,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
@@ -79,7 +78,10 @@ dependencies {
     implementation(libs.koin.androidx.compose)
     implementation(libs.koin.annotations)
     ksp(libs.koin.ksp.compiler)
+    implementation(libs.compose.navigation)
+    implementation(libs.compose.material)
 
     api(project(":ui"))
     api(project(":common"))
+    api(project(":data"))
 }

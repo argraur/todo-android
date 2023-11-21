@@ -64,4 +64,5 @@ dependencies {
     ksp(libs.koin.ksp.compiler)
 
     api(project(":common"))
+    api(project(":domain"))
 }
