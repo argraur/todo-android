@@ -72,4 +72,6 @@ dependencies {
     annotationProcessor(libs.room.compiler)
     ksp(libs.room.compiler)
     implementation(libs.room.ktx)
+
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 }
