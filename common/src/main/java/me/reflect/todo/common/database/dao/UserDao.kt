@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 import me.reflect.todo.common.database.model.core.UserEntity
 
 @Dao
@@ -13,4 +14,7 @@ interface UserDao {
 
     @Query("DELETE from UserEntity")
     fun deleteUser()
+
+    @Query("SELECT * from UserEntity LIMIT 1")
+    fun getUser(): Flow<UserEntity>
 }

@@ -3,7 +3,9 @@ package me.reflect.todo.common.network.di
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import me.reflect.todo.common.network.AuthService
+import me.reflect.todo.common.network.UserService
 import me.reflect.todo.common.network.CoreService
+import me.reflect.todo.common.network.FCMService
 import me.reflect.todo.common.network.util.AuthInterceptor
 import me.reflect.todo.common.network.util.Constants
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -38,6 +40,31 @@ var networkModule = module {
     single {
         Retrofit.Builder()
             .addConverterFactory(Json.asConverterFactory("application/json".toMediaTypeOrNull()!!))
+            .client(get<OkHttpClient>())
+            .baseUrl(Constants.CORE_URL)
+            .build()
+            .create(FCMService::class.java)
+    }
+
+    single {
+        Retrofit.Builder()
+            .addConverterFactory(Json.asConverterFactory("application/json".toMediaTypeOrNull()!!))
+            .client(get<OkHttpClient>())
+            .baseUrl(Constants.CORE_URL)
+            .build()
+            .create(UserService::class.java)
+    }
+
+    single {
+        Retrofit.Builder()
+            .addConverterFactory(Json.asConverterFactory("application/json".toMediaTypeOrNull()!!))
+            .client(run {
+                val logging = HttpLoggingInterceptor()
+                logging.level = HttpLoggingInterceptor.Level.BODY
+                OkHttpClient.Builder()
+                    .addInterceptor(logging)
+                    .build()
+            })
             .baseUrl(Constants.CORE_URL)
             .build()
             .create(AuthService::class.java)
