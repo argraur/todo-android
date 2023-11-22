@@ -1,9 +1,7 @@
 package me.reflect.todo.navigation
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-import androidx.navigation.NavOptions
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import kotlinx.coroutines.flow.firstOrNull
@@ -25,9 +23,12 @@ fun InitialNavHost(navController: NavHostController, tokenStorage: TokenDataStor
     NavHost(navController = navController, startDestination = startDestination) {
         val navigateToLogin = { navController.navigate("login") }
         val navigateToRegister = { navController.navigate("register") }
-        val navigateToMain = { navController.navigate("main") {
-            popUpTo(navController.graph.startDestinationId) { inclusive = true }
-        }}
+        val navigateToMain = {
+
+            navController.navigate("main") {
+                popUpTo(navController.graph.startDestinationId) { inclusive = true }
+            }
+        }
         val navigateBack = { navController.popBackStack(); Unit }
 
         composable("welcome") {

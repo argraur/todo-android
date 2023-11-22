@@ -1,0 +1,13 @@
+package me.reflect.todo.domain.core.usecases
+
+import me.reflect.todo.data.auth.repository.AuthRepository
+import org.koin.core.annotation.Single
+
+@Single
+class LoginUseCase (
+    private val authRepository: AuthRepository
+){
+    suspend operator fun invoke(email: String, password: String): Boolean {
+        return authRepository.login(email, password)
+    }
+}

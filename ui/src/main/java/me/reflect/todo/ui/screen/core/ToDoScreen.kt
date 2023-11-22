@@ -48,10 +48,9 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SearchBar
-import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.SwipeToDismiss
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberDismissState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -69,8 +68,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import me.reflect.todo.data.core.model.Task
 import me.reflect.todo.data.core.model.enums.Status
 import me.reflect.todo.data.core.model.enums.Type
@@ -119,7 +116,7 @@ fun ToDoScreen(viewModel: ToDoViewModel = koinViewModel()) {
         modifier = Modifier
             .fillMaxSize(),
         topBar = {
-            MediumTopAppBar(
+            TopAppBar(
                 modifier = Modifier.fillMaxWidth(),
                 windowInsets = WindowInsets(0.dp),
                 title = {
@@ -159,7 +156,7 @@ fun ToDoScreen(viewModel: ToDoViewModel = koinViewModel()) {
             val (column, refreshIndicator, cool) = createRefs()
             if (tasks.isEmpty()) {
                 Text(
-                    text = "Задач нет. Чётко",
+                    text = "Задач нет",
                     fontWeight = FontWeight.Normal,
                     style = MaterialTheme.typography.labelSmall,
                     fontSize = 14.sp,
@@ -335,7 +332,7 @@ fun filterTasks(task: Task, filterMode: FilterMode, isSearchEnabled: Boolean, se
         return false
 
     return if (isSearchEnabled && searchQuery.isNotEmpty())
-        task.name.contains(searchQuery)
+        task.name.contains(searchQuery, true)
     else
         true
 }

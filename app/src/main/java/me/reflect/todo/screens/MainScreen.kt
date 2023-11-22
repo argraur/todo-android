@@ -14,12 +14,15 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import me.reflect.todo.common.firebase.FCMTokenService
 import me.reflect.todo.navigation.ReDoNavHost
 import me.reflect.todo.navigation.ReDoScreen
+import org.koin.compose.koinInject
 
 @Composable
-fun BaseScreen(onNavigateToWelcome: () -> Unit) {
+fun BaseScreen(fcmTokenService: FCMTokenService = koinInject(), onNavigateToWelcome: () -> Unit) {
     val navController = rememberNavController()
+    fcmTokenService.onAuthTokenReady()
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
