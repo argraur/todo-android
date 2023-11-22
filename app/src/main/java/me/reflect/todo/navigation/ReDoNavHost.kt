@@ -14,7 +14,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import me.reflect.todo.R
-import me.reflect.todo.ui.screen.core.MainScreen
+import me.reflect.todo.ui.screen.core.ToDoScreen
 import me.reflect.todo.ui.screen.core.SettingsScreen
 import me.reflect.todo.ui.screen.core.NotificationsScreen
 
@@ -27,7 +27,7 @@ sealed class ReDoScreen(val route: String, @StringRes val resourceId: Int, val i
 @Composable
 fun ReDoNavHost(navController: NavHostController, padding: PaddingValues, onNavigateToWelcome: () -> Unit) {
     NavHost(navController = navController, startDestination = "main", modifier = Modifier.padding(padding)) {
-        composable(ReDoScreen.Main.route) { MainScreen(name = "Android") }
+        composable(ReDoScreen.Main.route) { ToDoScreen() }
         composable(ReDoScreen.Settings.route) { SettingsScreen(onNavigateToWelcome) }
         composable(ReDoScreen.Notifications.route) { NotificationsScreen() }
     }
