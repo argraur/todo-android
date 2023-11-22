@@ -1,11 +1,11 @@
 package me.reflect.todo.data.core.repository
 
-import android.net.http.HttpException
-import android.os.Build
 import android.util.Log
-import androidx.annotation.RequiresExtension
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 import me.reflect.todo.common.database.dao.CoreDao
 import me.reflect.todo.common.database.model.core.TaskEntity
 import me.reflect.todo.common.network.CoreService
@@ -13,6 +13,7 @@ import me.reflect.todo.common.network.model.core.NetworkTask
 import me.reflect.todo.data.core.model.Task
 import me.reflect.todo.data.core.model.asDataModel
 import me.reflect.todo.data.core.model.asEntity
+import me.reflect.todo.data.core.model.asNetwork
 
 class CoreRepositoryImpl(
     private val coreService: CoreService,
@@ -23,11 +24,53 @@ class CoreRepositoryImpl(
             .map { it.map(TaskEntity::asDataModel) }
 
     override suspend fun syncRepository() {
-        try {
-            val tasks = coreService.getMyTasks()
-            coreDao.insertTasks(*(tasks.tasks.map(NetworkTask::asEntity)).toTypedArray())
-        } catch (e: Exception) {
-            Log.e(this::class.simpleName, "Error occurred while synchronizing: ${e.stackTraceToString()}")
+        withContext(Dispatchers.IO) {
+            try {
+                val tasks = coreService.getMyTasks()
+                Log.i("CoreRepository", "Received tasks: $tasks")
+                coreDao.deleteAllTasks()
+                coreDao.insertTasks(*(tasks.map(NetworkTask::asEntity)).toTypedArray())
+            } catch (e: Exception) {
+                Log.e(
+                    this::class.simpleName,
+                    "Error occurred while synchronizing: ${e.stackTraceToString()}"
+                )
+            }
         }
+    }
+
+    override suspend fun addTask(task: Task): Boolean {
+        return withContext(Dispatchers.IO) {
+            try {
+                val result = coreService.addTask(task.asNetwork())
+                coreDao.insertTask(result.asEntity())
+                return@withContext true
+            } catch (e: Exception) {
+                Log.e(this::class.simpleName, "Error occurred while synchronizing", e)
+                return@withContext false
+            }
+        }
+    }
+
+    override suspend fun deleteTask(task: Task): Boolean {
+        return withContext(Dispatchers.IO) {
+            try {
+                val response = coreService.deleteTaskById(task.id)
+                if (response.isSuccessful) {
+                    coreDao.deleteTask(task.asEntity())
+                    return@withContext true
+                }
+                return@withContext false
+            } catch (e: Exception) {
+                Log.e(this::class.simpleName, "Error occurred while removing task with id = ${task.id}", e)
+                return@withContext false
+            }
+        }
+    }
+
+    override suspend fun getTaskById(id: String): Task {
+        return withContext(Dispatchers.IO) {
+            return@withContext coreDao.getTaskById(id.toLong())
+        }.first().asDataModel()
     }
 }
