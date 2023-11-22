@@ -6,6 +6,7 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -232,11 +233,7 @@ fun ToDoScreen(viewModel: ToDoViewModel = koinViewModel()) {
                 }
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
                     items(
-                        items = filterTasks(tasks,
-                            filterMode = uiState.filterMode,
-                            isSearchEnabled = uiState.searchVisible,
-                            searchQuery = searchQuery
-                        ),
+                        items = tasks,
                         key = { it.id },
                     ) {task ->
                         var visible by remember { mutableStateOf(true) }
@@ -251,7 +248,12 @@ fun ToDoScreen(viewModel: ToDoViewModel = koinViewModel()) {
                         )
 
                         AnimatedVisibility(
-                            visible = visible,
+                            visible = filterTasks(
+                                task,
+                                filterMode = uiState.filterMode,
+                                isSearchEnabled = uiState.searchVisible,
+                                searchQuery
+                            ) && visible,
                             enter = slideInVertically {
                                 with(density) {
                                     -40.dp.roundToPx()
@@ -261,7 +263,7 @@ fun ToDoScreen(viewModel: ToDoViewModel = koinViewModel()) {
                             ) + fadeIn(
                                 initialAlpha = 0.3f
                             ),
-                            exit = fadeOut()
+                            exit = shrinkVertically() + fadeOut()
                         ) {
                             SwipeToDismiss(
                                 state = dismissState,
@@ -322,19 +324,20 @@ fun ToDoScreen(viewModel: ToDoViewModel = koinViewModel()) {
     }
 }
 
-fun filterTasks(tasks: List<Task>, filterMode: FilterMode, isSearchEnabled: Boolean, searchQuery: String): List<Task> {
-    val filtered = when (filterMode) {
-        FilterMode.CLOSED -> tasks.filter { it.closed || it.status == Status.CLOSED }
-        FilterMode.NEW -> tasks.filter { it.type == Type.NEW }
-        else -> tasks
+fun filterTasks(task: Task, filterMode: FilterMode, isSearchEnabled: Boolean, searchQuery: String): Boolean {
+    val isGood = when (filterMode) {
+        FilterMode.CLOSED -> task.closed || task.status == Status.CLOSED
+        FilterMode.NEW -> task.type == Type.NEW
+        else -> true
     }
 
+    if (!isGood)
+        return false
+
     return if (isSearchEnabled && searchQuery.isNotEmpty())
-        filtered.filter {
-            it.name.contains(searchQuery, true)
-        }
+        task.name.contains(searchQuery)
     else
-        filtered
+        true
 }
 
 enum class FilterMode {
