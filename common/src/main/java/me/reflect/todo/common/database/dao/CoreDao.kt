@@ -3,6 +3,7 @@ package me.reflect.todo.common.database.dao
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 import me.reflect.todo.common.database.model.core.TaskEntity
@@ -18,9 +19,12 @@ interface CoreDao {
     @Insert
     fun insertTask(task: TaskEntity)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertTasks(vararg tasks: TaskEntity)
 
     @Delete
     fun deleteTask(task: TaskEntity)
+
+    @Query("DELETE FROM TaskEntity")
+    fun deleteAllTasks()
 }

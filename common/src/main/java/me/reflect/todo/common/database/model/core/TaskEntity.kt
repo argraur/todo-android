@@ -10,11 +10,12 @@ data class TaskEntity(
     var name: String,
     var description: String,
     var creatorId: Long,
-    var assigneeId: Long,
+    var assigneeId: List<Long>,
     var projectId: Long,
     var closed: Boolean,
     var urgency: String,
     var importance: String,
     var type: String,
-    var status: String
+    var status: String,
+    var createdAt: String
 )
