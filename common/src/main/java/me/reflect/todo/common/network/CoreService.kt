@@ -17,7 +17,7 @@ interface CoreService {
     @GET("/core/task/my")
     suspend fun getMyTasks(): List<NetworkTask>
 
-    @GET("/core/task/{id}")
+    @GET("/core/task/id/{id}")
     suspend fun getTaskById(id: String): NetworkTask
 
     @GET("/core/task/project/{id}")
@@ -26,10 +26,10 @@ interface CoreService {
     @POST("/core/task")
     suspend fun addTask(@Body task: NetworkTask): NetworkTask
 
-    @PUT("/core/task/{id}")
+    @PUT("/core/task/id/{id}")
     suspend fun updateTaskById(@Path("id") id: String, @Body task: NetworkTask): NetworkTask
 
-    @DELETE("/core/task/{id}")
+    @DELETE("/core/task/id/{id}")
     suspend fun deleteTaskById(@Path("id") id: Long): Response<ResponseBody>
 
     @GET("/core/project/{id}")
