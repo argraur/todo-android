@@ -27,7 +27,7 @@ fun WelcomeScreen(tokenDataStore: TokenDataStore = koinInject(), onNavigateToLog
 
             Button(onClick = {
                 CoroutineScope(Dispatchers.Main).launch {
-                    tokenDataStore.writeToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcmdyYXVyQGdtYWlsLmNvbSIsInVzZXJJZCI6NSwiZXhwIjoxNzAxMTIzMTkxfQ.ifJQDylYUpK6ebxQnRp9BrjYIpZjW7hp2DEgAQI5XYI")
+                    tokenDataStore.writeToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcmdyYXVyQGdtYWlsLmNvbSIsInVzZXJJZCI6MSwiZW5hYmxlIjpmYWxzZSwiZXhwIjoxNzAxMjA1NTAxfQ.FoNlYGdqGq2bM83glDf25L3zImZ2smuvAV8MjOgA1n8")
                     onNavigateToMain()
                 }
             }) {
