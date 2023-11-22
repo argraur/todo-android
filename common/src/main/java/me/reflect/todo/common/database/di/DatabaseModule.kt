@@ -13,4 +13,5 @@ var databaseModule = module {
     }
 
     single { get<AppDatabase>().coreDao() }
+    single { get<AppDatabase>().userDao() }
 }

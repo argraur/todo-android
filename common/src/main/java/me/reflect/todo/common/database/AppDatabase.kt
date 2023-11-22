@@ -5,10 +5,13 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import me.reflect.todo.common.database.converter.Converters
 import me.reflect.todo.common.database.dao.CoreDao
+import me.reflect.todo.common.database.dao.UserDao
 import me.reflect.todo.common.database.model.core.TaskEntity
+import me.reflect.todo.common.database.model.core.UserEntity
 
-@Database(entities = [TaskEntity::class], version = 3)
+@Database(entities = [TaskEntity::class, UserEntity::class], version = 4)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun coreDao(): CoreDao
+    abstract fun userDao(): UserDao
 }
