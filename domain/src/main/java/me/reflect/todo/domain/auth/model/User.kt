@@ -1,6 +1,6 @@
-package me.reflect.todo.data.auth.model
+package me.reflect.todo.domain.auth.model
 
-import me.reflect.todo.common.database.model.core.UserEntity
+import me.reflect.todo.common.database.model.auth.UserEntity
 import me.reflect.todo.common.network.model.auth.NetworkUser
 
 data class User(

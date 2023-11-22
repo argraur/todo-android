@@ -27,9 +27,9 @@ class App : Application() {
                 databaseModule,
                 dataCoreModule,
                 dataAuthModule,
+                firebaseModule,
                 DomainModule().module,
-                UiModule().module,
-                firebaseModule
+                UiModule().module
             )
         }
     }

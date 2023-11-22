@@ -1,12 +1,12 @@
-package me.reflect.todo.data.core.model
+package me.reflect.todo.domain.core.model
 
 import me.reflect.todo.common.database.model.core.TaskEntity
 import me.reflect.todo.common.network.model.core.NetworkTask
 import me.reflect.todo.common.network.model.core.NetworkTaskProperties
-import me.reflect.todo.data.core.model.enums.Importance
-import me.reflect.todo.data.core.model.enums.Status
-import me.reflect.todo.data.core.model.enums.Type
-import me.reflect.todo.data.core.model.enums.Urgency
+import me.reflect.todo.domain.core.model.enums.Importance
+import me.reflect.todo.domain.core.model.enums.Status
+import me.reflect.todo.domain.core.model.enums.Type
+import me.reflect.todo.domain.core.model.enums.Urgency
 
 data class Task(
     var id: Long = 0,

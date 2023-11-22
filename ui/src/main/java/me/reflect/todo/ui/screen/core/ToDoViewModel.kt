@@ -10,11 +10,11 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import me.reflect.todo.data.core.model.Task
 import me.reflect.todo.domain.core.usecases.AddTaskUseCase
-import me.reflect.todo.domain.core.usecases.FetchUserUseCase
+import me.reflect.todo.domain.auth.usecases.FetchUserUseCase
 import me.reflect.todo.domain.core.usecases.GetTasksUseCase
-import me.reflect.todo.domain.core.usecases.GetUserUseCase
+import me.reflect.todo.domain.auth.usecases.GetUserUseCase
+import me.reflect.todo.domain.core.model.Task
 import me.reflect.todo.domain.core.usecases.RefreshRepositoryUseCase
 import me.reflect.todo.domain.core.usecases.RemoveTaskUseCase
 import org.koin.android.annotation.KoinViewModel

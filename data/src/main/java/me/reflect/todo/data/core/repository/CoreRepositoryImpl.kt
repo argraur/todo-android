@@ -10,10 +10,11 @@ import me.reflect.todo.common.database.dao.CoreDao
 import me.reflect.todo.common.database.model.core.TaskEntity
 import me.reflect.todo.common.network.CoreService
 import me.reflect.todo.common.network.model.core.NetworkTask
-import me.reflect.todo.data.core.model.Task
-import me.reflect.todo.data.core.model.asDataModel
-import me.reflect.todo.data.core.model.asEntity
-import me.reflect.todo.data.core.model.asNetwork
+import me.reflect.todo.domain.core.model.Task
+import me.reflect.todo.domain.core.model.asDataModel
+import me.reflect.todo.domain.core.model.asEntity
+import me.reflect.todo.domain.core.model.asNetwork
+import me.reflect.todo.domain.repository.CoreRepository
 
 class CoreRepositoryImpl(
     private val coreService: CoreService,

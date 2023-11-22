@@ -18,11 +18,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
-import me.reflect.todo.common.token.TokenDataStore
-import org.koin.compose.koinInject
 
 @Composable
-fun WelcomeScreen(tokenDataStore: TokenDataStore = koinInject(), onNavigateToLogin: () -> Unit, onNavigateToRegister: () -> Unit, onNavigateToMain: () -> Unit) {
+fun WelcomeScreen(onNavigateToLogin: () -> Unit, onNavigateToRegister: () -> Unit, onNavigateToMain: () -> Unit) {
     Scaffold {
         ConstraintLayout(modifier = Modifier
             .fillMaxSize()

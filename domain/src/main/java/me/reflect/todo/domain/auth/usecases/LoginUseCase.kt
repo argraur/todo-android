@@ -1,6 +1,6 @@
-package me.reflect.todo.domain.core.usecases
+package me.reflect.todo.domain.auth.usecases
 
-import me.reflect.todo.data.auth.repository.AuthRepository
+import me.reflect.todo.domain.repository.AuthRepository
 import org.koin.core.annotation.Single
 
 @Single

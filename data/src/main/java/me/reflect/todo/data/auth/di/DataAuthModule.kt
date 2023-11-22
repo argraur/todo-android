@@ -1,6 +1,6 @@
 package me.reflect.todo.data.auth.di
 
-import me.reflect.todo.data.auth.repository.AuthRepository
+import me.reflect.todo.domain.repository.AuthRepository
 import me.reflect.todo.data.auth.repository.AuthRepositoryImpl
 import org.koin.dsl.module
 

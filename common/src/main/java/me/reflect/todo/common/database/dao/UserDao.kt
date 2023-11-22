@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
-import me.reflect.todo.common.database.model.core.UserEntity
+import me.reflect.todo.common.database.model.auth.UserEntity
 
 @Dao
 interface UserDao {

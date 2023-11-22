@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import me.reflect.todo.domain.core.usecases.RegisterUseCase
+import me.reflect.todo.domain.auth.usecases.RegisterUseCase
 import org.koin.android.annotation.KoinViewModel
 
 enum class RegisterState {

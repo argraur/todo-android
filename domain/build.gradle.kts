@@ -52,5 +52,5 @@ dependencies {
     implementation(libs.koin.androidx.compose)
     implementation(libs.koin.annotations)
     ksp(libs.koin.ksp.compiler)
-    api(project(":data"))
+    api(project(":common"))
 }

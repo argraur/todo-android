@@ -27,10 +27,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
-import me.reflect.todo.data.core.model.enums.Importance
-import me.reflect.todo.data.core.model.enums.Status
-import me.reflect.todo.data.core.model.enums.Type
-import me.reflect.todo.data.core.model.enums.Urgency
+import me.reflect.todo.domain.core.model.enums.Importance
+import me.reflect.todo.domain.core.model.enums.Status
+import me.reflect.todo.domain.core.model.enums.Type
+import me.reflect.todo.domain.core.model.enums.Urgency
 import me.reflect.todo.ui.screen.core.ToDoViewModel
 
 @Composable

@@ -1,7 +1,7 @@
-package me.reflect.todo.data.auth.repository
+package me.reflect.todo.domain.repository
 
 import kotlinx.coroutines.flow.Flow
-import me.reflect.todo.data.auth.model.User
+import me.reflect.todo.domain.auth.model.User
 
 interface AuthRepository {
     suspend fun login(email: String, password: String): Boolean

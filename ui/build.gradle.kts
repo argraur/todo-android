@@ -67,6 +67,5 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.messaging)
 
-    api(project(":common"))
     api(project(":domain"))
 }

@@ -32,10 +32,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import me.reflect.todo.data.core.model.Task
-import me.reflect.todo.data.core.model.enums.Importance
-import me.reflect.todo.data.core.model.enums.Type
-import me.reflect.todo.data.core.model.enums.Urgency
+import me.reflect.todo.domain.core.model.Task
+import me.reflect.todo.domain.core.model.enums.Importance
+import me.reflect.todo.domain.core.model.enums.Type
+import me.reflect.todo.domain.core.model.enums.Urgency
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

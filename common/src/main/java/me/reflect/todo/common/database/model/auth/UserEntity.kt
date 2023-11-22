@@ -1,4 +1,4 @@
-package me.reflect.todo.common.database.model.core
+package me.reflect.todo.common.database.model.auth
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

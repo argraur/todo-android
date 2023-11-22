@@ -3,8 +3,6 @@ package me.reflect.todo.data.auth.repository
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.count
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.withContext
 import me.reflect.todo.common.database.dao.UserDao
@@ -13,9 +11,10 @@ import me.reflect.todo.common.network.UserService
 import me.reflect.todo.common.network.model.auth.LoginModel
 import me.reflect.todo.common.network.model.auth.RegisterModel
 import me.reflect.todo.common.token.TokenDataStore
-import me.reflect.todo.data.auth.model.User
-import me.reflect.todo.data.auth.model.asDataModel
-import me.reflect.todo.data.auth.model.asEntity
+import me.reflect.todo.domain.auth.model.User
+import me.reflect.todo.domain.auth.model.asDataModel
+import me.reflect.todo.domain.auth.model.asEntity
+import me.reflect.todo.domain.repository.AuthRepository
 
 class AuthRepositoryImpl (
     private val authService: AuthService,

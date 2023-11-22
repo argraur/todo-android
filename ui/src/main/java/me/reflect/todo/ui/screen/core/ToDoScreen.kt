@@ -46,7 +46,6 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SwipeToDismiss
 import androidx.compose.material3.Text
@@ -68,9 +67,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
-import me.reflect.todo.data.core.model.Task
-import me.reflect.todo.data.core.model.enums.Status
-import me.reflect.todo.data.core.model.enums.Type
+import me.reflect.todo.domain.core.model.Task
+import me.reflect.todo.domain.core.model.enums.Status
+import me.reflect.todo.domain.core.model.enums.Type
 import me.reflect.todo.ui.R
 import me.reflect.todo.ui.screen.core.tasks.TaskEditDialog
 import me.reflect.todo.ui.screen.core.tasks.TaskItem
