@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "59303379020",
+    "project_id": "luzhniki-fefa1",
+    "storage_bucket": "luzhniki-fefa1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59303379020:android:ffea620993073e625434e9",
+        "android_client_info": {
+          "package_name": "me.reflect.todo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbkubK50G3i31dxVa79M1HRgjyPuFhKdk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

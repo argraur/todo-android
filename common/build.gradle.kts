@@ -65,6 +65,8 @@ dependencies {
     implementation(libs.datastore.preferences)
     implementation(libs.retrofit.kotlinx.serialization.converter)
     implementation(libs.kotlin.serialization.json)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.messaging)
 
     implementation(libs.room.runtime)
     annotationProcessor(libs.room.compiler)

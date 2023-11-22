@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -80,6 +81,8 @@ dependencies {
     ksp(libs.koin.ksp.compiler)
     implementation(libs.compose.navigation)
     implementation(libs.compose.material)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.messaging)
 
     api(project(":ui"))
     api(project(":common"))

@@ -27,6 +27,7 @@ fun BaseScreen(onNavigateToWelcome: () -> Unit) {
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentDestination = navBackStackEntry?.destination
                 listOf(
+                    ReDoScreen.Notifications,
                     ReDoScreen.Main,
                     ReDoScreen.Settings
                 ).forEach { screen ->
